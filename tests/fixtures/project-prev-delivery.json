@@ -1,0 +1,422 @@
+{
+ "version": 2,
+ "id": "fx1",
+ "name": "Fixture from previous delivery",
+ "updatedAt": 1791965617927,
+ "media": {
+  "m1": {
+   "id": "m1",
+   "kind": "video",
+   "name": "clip.webm",
+   "mime": "video/webm",
+   "duration": 8,
+   "width": 1280,
+   "height": 720,
+   "hasAudio": true
+  },
+  "m2": {
+   "id": "m2",
+   "kind": "image",
+   "name": "photo.png",
+   "mime": "image/png",
+   "width": 800,
+   "height": 600
+  }
+ },
+ "video": {
+  "fps": 30,
+  "width": 1280,
+  "height": 720,
+  "tracks": [
+   {
+    "id": "A1",
+    "kind": "audio",
+    "name": "A1",
+    "muted": false,
+    "solo": false,
+    "locked": false,
+    "visible": true
+   },
+   {
+    "id": "V1",
+    "kind": "video",
+    "name": "V1",
+    "muted": false,
+    "solo": false,
+    "locked": false,
+    "visible": true
+   },
+   {
+    "id": "T1",
+    "kind": "text",
+    "name": "T1",
+    "muted": false,
+    "solo": false,
+    "locked": false,
+    "visible": true
+   }
+  ],
+  "clips": {
+   "c": {
+    "id": "c",
+    "trackId": "V1",
+    "type": "media",
+    "mediaId": "m1",
+    "start": 8,
+    "srcStart": 0,
+    "srcEnd": 2,
+    "speed": 2,
+    "volume": 1,
+    "balance": 0,
+    "fadeIn": 0,
+    "fadeOut": 0,
+    "transform": {
+     "x": 0.1,
+     "y": -0.05,
+     "scale": 1.2,
+     "rotation": 5,
+     "opacity": 0.9
+    },
+    "crop": {
+     "l": 0,
+     "t": 0.1,
+     "r": 0,
+     "b": 0
+    },
+    "filters": {
+     "brightness": 110,
+     "contrast": 100,
+     "saturation": 100,
+     "hue": 0,
+     "grayscale": 0,
+     "sepia": 0,
+     "invert": 0,
+     "blur": 2,
+     "exposure": 0,
+     "sharpen": 0,
+     "temperature": 0,
+     "tint": 0,
+     "highlights": 0,
+     "shadows": 0,
+     "whites": 0,
+     "blacks": 0,
+     "vignette": 20,
+     "film": 0,
+     "vintage": 0,
+     "glow": 0,
+     "distortion": 0,
+     "chromatic": 0
+    },
+    "keyframes": {
+     "scale": [
+      {
+       "t": 0,
+       "v": 1,
+       "ease": "linear"
+      },
+      {
+       "t": 2,
+       "v": 1.5,
+       "ease": "easeInOut"
+      }
+     ]
+    },
+    "detached": true,
+    "linkId": "L1"
+   },
+   "c-audio": {
+    "id": "c-audio",
+    "trackId": "A1",
+    "type": "media",
+    "mediaId": "m1",
+    "start": 8,
+    "srcStart": 0,
+    "srcEnd": 2,
+    "speed": 2,
+    "volume": 1,
+    "balance": 0,
+    "fadeIn": 0,
+    "fadeOut": 0,
+    "transform": {
+     "x": 0.1,
+     "y": -0.05,
+     "scale": 1.2,
+     "rotation": 5,
+     "opacity": 0.9
+    },
+    "crop": {
+     "l": 0,
+     "t": 0.1,
+     "r": 0,
+     "b": 0
+    },
+    "filters": {
+     "brightness": 110,
+     "contrast": 100,
+     "saturation": 100,
+     "hue": 0,
+     "grayscale": 0,
+     "sepia": 0,
+     "invert": 0,
+     "blur": 2,
+     "exposure": 0,
+     "sharpen": 0,
+     "temperature": 0,
+     "tint": 0,
+     "highlights": 0,
+     "shadows": 0,
+     "whites": 0,
+     "blacks": 0,
+     "vignette": 20,
+     "film": 0,
+     "vintage": 0,
+     "glow": 0,
+     "distortion": 0,
+     "chromatic": 0
+    },
+    "keyframes": {},
+    "linkId": "L1"
+   },
+   "comp1": {
+    "id": "comp1",
+    "trackId": "V1",
+    "type": "compound",
+    "compoundId": "K1",
+    "start": 0,
+    "srcStart": 0,
+    "srcEnd": 7,
+    "speed": 1,
+    "volume": 1,
+    "balance": 0,
+    "fadeIn": 0,
+    "fadeOut": 0,
+    "transform": {
+     "x": 0,
+     "y": 0,
+     "scale": 1,
+     "rotation": 0,
+     "opacity": 1
+    },
+    "crop": {
+     "l": 0,
+     "t": 0,
+     "r": 0,
+     "b": 0
+    },
+    "filters": {
+     "brightness": 100,
+     "contrast": 100,
+     "saturation": 100,
+     "hue": 0,
+     "grayscale": 0,
+     "sepia": 0,
+     "invert": 0,
+     "blur": 0,
+     "exposure": 0,
+     "sharpen": 0,
+     "temperature": 0,
+     "tint": 0,
+     "highlights": 0,
+     "shadows": 0,
+     "whites": 0,
+     "blacks": 0,
+     "vignette": 0,
+     "film": 0,
+     "vintage": 0,
+     "glow": 0,
+     "distortion": 0,
+     "chromatic": 0
+    },
+    "keyframes": {},
+    "muted": true
+   }
+  },
+  "transitions": [],
+  "markers": [
+   {
+    "id": "k1",
+    "t": 2,
+    "name": "Intro"
+   }
+  ],
+  "compounds": {
+   "K1": {
+    "id": "K1",
+    "name": "Compound 1",
+    "length": 7,
+    "tracks": [
+     {
+      "id": "V1",
+      "kind": "video",
+      "name": "V1",
+      "muted": false,
+      "solo": false,
+      "locked": false,
+      "visible": true
+     }
+    ],
+    "clips": {
+     "a": {
+      "id": "a",
+      "trackId": "V1",
+      "type": "media",
+      "mediaId": "m1",
+      "start": 0,
+      "srcStart": 0,
+      "srcEnd": 4,
+      "speed": 1,
+      "volume": 1,
+      "balance": 0,
+      "fadeIn": 0,
+      "fadeOut": 0,
+      "transform": {
+       "x": 0.1,
+       "y": -0.05,
+       "scale": 1.2,
+       "rotation": 5,
+       "opacity": 0.9
+      },
+      "crop": {
+       "l": 0,
+       "t": 0.1,
+       "r": 0,
+       "b": 0
+      },
+      "filters": {
+       "brightness": 110,
+       "contrast": 100,
+       "saturation": 100,
+       "hue": 0,
+       "grayscale": 0,
+       "sepia": 0,
+       "invert": 0,
+       "blur": 2,
+       "exposure": 0,
+       "sharpen": 0,
+       "temperature": 0,
+       "tint": 0,
+       "highlights": 0,
+       "shadows": 0,
+       "whites": 0,
+       "blacks": 0,
+       "vignette": 20,
+       "film": 0,
+       "vintage": 0,
+       "glow": 0,
+       "distortion": 0,
+       "chromatic": 0
+      },
+      "keyframes": {
+       "scale": [
+        {
+         "t": 0,
+         "v": 1,
+         "ease": "linear"
+        },
+        {
+         "t": 2,
+         "v": 1.5,
+         "ease": "easeInOut"
+        }
+       ]
+      }
+     },
+     "b": {
+      "id": "b",
+      "trackId": "V1",
+      "type": "media",
+      "mediaId": "m1",
+      "start": 4,
+      "srcStart": 0,
+      "srcEnd": 3,
+      "speed": 1,
+      "volume": 1,
+      "balance": 0,
+      "fadeIn": 0,
+      "fadeOut": 0,
+      "transform": {
+       "x": 0.1,
+       "y": -0.05,
+       "scale": 1.2,
+       "rotation": 5,
+       "opacity": 0.9
+      },
+      "crop": {
+       "l": 0,
+       "t": 0.1,
+       "r": 0,
+       "b": 0
+      },
+      "filters": {
+       "brightness": 110,
+       "contrast": 100,
+       "saturation": 100,
+       "hue": 0,
+       "grayscale": 0,
+       "sepia": 0,
+       "invert": 0,
+       "blur": 2,
+       "exposure": 0,
+       "sharpen": 0,
+       "temperature": 0,
+       "tint": 0,
+       "highlights": 0,
+       "shadows": 0,
+       "whites": 0,
+       "blacks": 0,
+       "vignette": 20,
+       "film": 0,
+       "vintage": 0,
+       "glow": 0,
+       "distortion": 0,
+       "chromatic": 0
+      },
+      "keyframes": {
+       "scale": [
+        {
+         "t": 0,
+         "v": 1,
+         "ease": "linear"
+        },
+        {
+         "t": 2,
+         "v": 1.5,
+         "ease": "easeInOut"
+        }
+       ]
+      }
+     }
+    },
+    "transitions": [
+     {
+      "id": "t1",
+      "trackId": "V1",
+      "fromClipId": "a",
+      "toClipId": "b",
+      "kind": "dissolve",
+      "duration": 0.5,
+      "dir": "l"
+     }
+    ]
+   }
+  }
+ },
+ "photo": {
+  "width": 1280,
+  "height": 720,
+  "root": {
+   "kind": "group",
+   "id": "root",
+   "name": "Root",
+   "visible": true,
+   "locked": false,
+   "opacity": 1,
+   "blend": "source-over",
+   "x": 0,
+   "y": 0,
+   "scale": 1,
+   "rotation": 0,
+   "children": []
+  }
+ }
+}

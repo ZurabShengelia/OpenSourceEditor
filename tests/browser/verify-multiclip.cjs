@@ -1,0 +1,24 @@
+const { chromium } = require("./launch.cjs"); const http = require("http"), fs = require("fs"), cp = require("child_process");
+const srv = http.createServer((q, r) => { const f = q.url.split("?")[0] === "/" ? "index.html" : q.url.slice(1); try { r.setHeader("content-type", f.endsWith(".js") ? "text/javascript" : f.endsWith(".css") ? "text/css" : "text/html"); r.end(fs.readFileSync(process.env.BUNDLE_DIR + "/" + f)); } catch { r.statusCode = 404; r.end(); } });
+const N = Number(process.env.N || 12); const SRC = "/tmp/verify-src-short.webm";
+if (!fs.existsSync(SRC)) cp.execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", "testsrc2=size=1280x720:rate=30:duration=1.5", "-f", "lavfi", "-i", "sine=frequency=440:sample_rate=48000:duration=1.5", "-c:v", "libvpx-vp9", "-b:v", "3M", "-g", "15", "-deadline", "realtime", "-cpu-used", "8", "-pix_fmt", "yuv420p", "-c:a", "libopus", SRC]);
+(async () => {
+  await new Promise((r) => srv.listen(8192, r)); const b = await chromium.launch({ executablePath: process.env.CHROME, args: ["--no-sandbox"] });
+  const ctx = await b.newContext({ viewport: { width: 1500, height: 900 }, acceptDownloads: true }); await ctx.addInitScript(() => { try { sessionStorage.setItem("loupe.started", "1"); } catch {} });
+  const pg = await ctx.newPage(); await pg.goto("http://localhost:8192/index.html#/editor"); await pg.waitForSelector("text=Media");
+  await pg.locator("input[type=file]").first().setInputFiles(SRC); await pg.waitForSelector(".clip", { timeout: 30000 }); await pg.waitForTimeout(2000);
+  const dur = await pg.evaluate((n) => window.__loupe.buildSequence(n), N); await pg.waitForTimeout(800);
+  const nClips = await pg.evaluate(() => window.__loupe.clips().length);
+    await pg.getByRole("button", { name: "Export", exact: true }).dispatchEvent("click"); await pg.getByRole("menuitem", { name: /Export video/ }).dispatchEvent("click");
+  await pg.waitForFunction(() => document.querySelectorAll("[role=dialog] .chip:not(:disabled)").length > 0, null, { timeout: 30000 }); await pg.waitForTimeout(400);
+  const dlg = pg.getByRole("dialog"); const webm = (await dlg.locator("select").first().locator("option").allTextContents()).find((t) => /^WebM/.test(t)); await dlg.locator("select").first().selectOption({ label: webm }); await pg.waitForTimeout(300); await dlg.locator(".chip", { hasText: "720p 30" }).click();
+  const dl = pg.waitForEvent("download", { timeout: 600000 }); await dlg.getByRole("button", { name: "Export", exact: true }).click(); const d = await dl; await pg.waitForTimeout(600);
+  const path = "/tmp/verify-multiclip.webm"; await d.saveAs(path); const st = await pg.evaluate(() => window.__loupe.offlineStats());
+  const j = JSON.parse(cp.execFileSync("ffprobe", ["-v", "error", "-print_format", "json", "-show_format", "-show_streams", "-count_packets", path]).toString()); const v = j.streams.find((s) => s.codec_type === "video"), a = j.streams.find((s) => s.codec_type === "audio");
+  const dec = (() => { try { cp.execFileSync("ffmpeg", ["-v", "error", "-i", path, "-f", "null", "-"], { stdio: ["ignore", "pipe", "pipe"] }); return "clean"; } catch (e) { return String(e.stderr).slice(0, 120); } })();
+  const sil = cp.spawnSync("ffmpeg", ["-i", path, "-af", "silencedetect=n=-50dB:d=0.15", "-f", "null", "-"]).stderr.toString().split("\n").filter((l) => /silence_start/.test(l)).length;
+  const expectFrames = Math.ceil(dur * 30 - 1e-9); const audioS = (() => { const o = cp.spawnSync("ffmpeg", ["-i", path, "-vn", "-f", "null", "-"]).stderr.toString(); const m = [...o.matchAll(/time=(\d+):(\d+):([\d.]+)/g)].pop(); return m ? +m[1] * 3600 + +m[2] * 60 + +m[3] : null; })();
+  const row = { clips: nClips, timelineS: +dur.toFixed(3), video: `${v.codec_name} ${v.width}x${v.height}`, frames: `${v.nb_read_packets}/${expectFrames}`, containerS: +Number(j.format.duration).toFixed(3), audioS, silentGaps: sil, decode: dec, exportS: +(st.totalMs / 1000).toFixed(1), peakVideoDecodersOpenAtOnce: st.peakDecoders, decodersStillOpenAfter: st.openDecoders, ranInWorker: st.worker === 1 };
+  const ok = Number(v.nb_read_packets) === expectFrames && Math.abs(Number(j.format.duration) - dur) < 0.12 && a && audioS !== null && Math.abs(audioS - dur) < 0.12 && sil === 0 && dec === "clean";
+  console.log(JSON.stringify(row)); console.log(ok ? "PASS multi-clip output matches the timeline" : "FAIL multi-clip output"); await b.close(); srv.close(); process.exit(ok ? 0 : 1);
+})().catch((e) => { console.log("HARNESS ERROR", e.stack.slice(0, 500)); process.exit(2); });

@@ -1,0 +1,8 @@
+import { createRequire } from "node:module"; import fs from "node:fs";
+const req = createRequire(process.env.ESBUILD_FROM ?? "./package.json"); const esbuild = req("esbuild");
+const [out, test] = [process.argv[2], process.argv[3] === "test"]; fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
+await esbuild.build({ entryPoints: ["src/main.tsx"], bundle: true, outdir: out, format: "esm", jsx: "automatic", nodePaths: (process.env.NODE_PATH ?? "").split(":").filter(Boolean), define: { __LOUPE_TEST__: String(test), "process.env.NODE_ENV": '"production"' }, minify: true, sourcemap: false, loader: { ".css": "css" }, logLevel: "warning", target: "es2022", entryNames: "main" });
+await esbuild.build({ entryPoints: ["src/app/exportWorker.ts"], bundle: true, outfile: out + "/exportWorker.js", format: "esm", nodePaths: (process.env.NODE_PATH ?? "").split(":").filter(Boolean), define: { __LOUPE_TEST__: String(test) }, minify: true, logLevel: "warning", target: "es2022" });
+const mainJs = out + "/main.js"; const code = fs.readFileSync(mainJs, "utf8"); if (!code.includes('"./exportWorker.ts"')) throw new Error("worker URL not found in the main bundle"); fs.writeFileSync(mainJs, code.replace('"./exportWorker.ts"', '"./exportWorker.js"'));
+fs.writeFileSync(out + "/index.html", `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OpenSourceEditor</title><link rel="stylesheet" href="/main.css"></head><body><div id="root"></div><script type="module" src="/main.js"></script></body></html>`);
+console.log("built", out);

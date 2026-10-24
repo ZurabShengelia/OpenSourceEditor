@@ -1,0 +1,34 @@
+@layer theme, legacy, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./styles/tokens.css" layer(legacy);
+@import "./styles/base.css" layer(legacy);
+@import "./styles/controls.css" layer(legacy);
+@import "./styles/shell.css" layer(legacy);
+@import "./styles/panels.css" layer(legacy);
+@import "./styles/canvas.css" layer(legacy);
+@import "./styles/timeline.css" layer(legacy);
+@import "./styles/landing.css" layer(legacy);
+@import "./styles/glass.css" layer(legacy);
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-inset: var(--inset);
+  --color-surface: var(--bg);
+  --color-panel: var(--panel);
+  --color-raised: var(--raised);
+  --color-hover: var(--hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-hi: var(--accent-hi);
+  --color-cyan: var(--cyan);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-mono);
+}

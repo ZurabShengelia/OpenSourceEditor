@@ -1,0 +1,27 @@
+.stage { display: flex; flex-direction: column; flex: 1; min-height: 0; min-width: 0; background: var(--canvas); }
+.opts { display: flex; align-items: center; gap: 8px; height: 34px; flex: none; padding: 0 10px; background: var(--panel); border-bottom: 1px solid var(--line); overflow-x: auto; white-space: nowrap; }
+.opts .lab { color: var(--muted); font-size: 11px; } .opts .name { font-weight: 600; color: var(--text-2); margin-right: 4px; }
+.opts .num { width: 56px; } .opts .range { flex: none; width: 92px; }
+.viewport { position: relative; flex: 1; min-height: 0; overflow: hidden; background: var(--canvas); touch-action: none; }
+.vp-content { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.vp-content canvas { position: absolute; inset: 0; display: block; }
+.vp-content .checker { position: absolute; inset: 0; background: conic-gradient(#2b2f34 25%, #22262a 0 50%, #2b2f34 0 75%, #22262a 0) 0 0 / 16px 16px; }
+.vp-content .frame { position: absolute; inset: 0; outline: 1px solid rgba(255, 255, 255, 0.1); pointer-events: none; }
+.vp-content svg { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.vp-content svg .hit { pointer-events: auto; }
+.rulers .rh { position: absolute; left: 0; top: 0; height: 18px; width: 100%; background: rgba(21, 24, 27, 0.94); border-bottom: 1px solid var(--line); pointer-events: none; }
+.rulers .rv { position: absolute; left: 0; top: 0; width: 18px; height: 100%; background: rgba(21, 24, 27, 0.94); border-right: 1px solid var(--line); pointer-events: none; }
+.rulers .corner { position: absolute; left: 0; top: 0; width: 18px; height: 18px; background: var(--panel); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); pointer-events: none; }
+.viewbar { display: flex; align-items: center; gap: 4px; height: 30px; flex: none; padding: 0 8px; background: var(--panel); border-top: 1px solid var(--line); }
+.viewbar .pct { width: 44px; text-align: center; color: var(--text-2); font: 11px var(--font-mono); }
+.viewbar .sp { flex: 1; }
+.empty-stage { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 2; }
+.empty-card { pointer-events: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 22px 28px; border: 1px dashed var(--line-strong); border-radius: var(--r3); color: var(--muted); text-align: center; line-height: 1.5; background: rgba(16, 18, 20, 0.7); }
+.empty-card b { color: var(--text-2); font-weight: 500; font-size: 13px; }
+.maskbadge { position: absolute; left: 24px; top: 26px; z-index: 3; display: flex; align-items: center; gap: 8px; height: 24px; padding: 0 4px 0 8px; background: var(--raised); border: 1px solid var(--accent-line); border-radius: var(--r2); color: var(--accent); font-size: 11.5px; }
+.transport { display: flex; align-items: center; gap: 2px; height: 36px; flex: none; padding: 0 10px; background: var(--panel); border-top: 1px solid var(--line); }
+.transport .play { width: 32px; height: 28px; color: var(--text); background: var(--raised); border: 1px solid var(--line-strong); }
+.tc { font: 500 13px var(--font-mono); letter-spacing: 0; color: var(--text); margin: 0 8px 0 10px; } .tc .of { color: var(--muted); }
+.transport .sp { flex: 1; } .transport .res { color: var(--muted); font: 11px var(--font-mono); margin: 0 8px; }
+.tc { white-space: nowrap; flex: none; }
+@media (max-width: 1320px) { .hide-narrow { display: none !important; } }

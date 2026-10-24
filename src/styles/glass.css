@@ -1,0 +1,17 @@
+.glass-bar { background: var(--glass-sheen), var(--glass); border: 1px solid var(--glass-line); box-shadow: var(--glass-hi), 0 6px 20px rgba(0, 0, 0, 0.3); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
+.topbar, .toolrail, .opts, .statusbar, .panel, .insp { position: relative; background: var(--glass-sheen), var(--glass); }
+.topbar::before, .toolrail::before, .opts::before, .statusbar::before, .panel::before, .insp::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
+.topbar { z-index: 30; }
+.panel-h { background: transparent; }
+.topbar { box-shadow: var(--glass-hi); border-bottom-color: var(--glass-line); } .toolrail, .panel { border-color: var(--glass-line); }
+.panel-h { border-bottom-color: var(--glass-line); }
+.toolrail .ibtn[aria-pressed="true"] { background: var(--accent-dim); box-shadow: inset 0 0 0 1px var(--accent-line); color: var(--accent-hi); }
+.menu, .dlg, .palette, .tip { background: var(--glass-sheen), var(--glass-strong); border: 1px solid var(--glass-line); box-shadow: var(--glass-hi), 0 18px 48px rgba(0, 0, 0, 0.5); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
+.tip { background: var(--glass-strong); box-shadow: var(--glass-hi), 0 6px 18px rgba(0, 0, 0, 0.45); }
+.menu, .dlg, .palette { border-radius: 6px; } .dlg-h { border-bottom-color: var(--glass-line); }
+.dlg-back, .palette-back { background: rgba(4, 7, 8, 0.5); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.menu-btn:hover, .menu-btn[aria-expanded="true"] { background: rgba(255, 255, 255, 0.08); }
+
+.seg { background: rgba(8, 12, 13, 0.55); }
+.stage, .viewport, .tl, .tl-scroll, .tl-inner, .tl-ruler { backdrop-filter: none; -webkit-backdrop-filter: none; }
+@media (prefers-reduced-transparency: reduce) { .topbar, .toolrail, .opts, .statusbar, .panel, .insp, .menu, .dlg, .palette, .tip, .glass-bar, .glass-card { background: var(--raised); backdrop-filter: none; -webkit-backdrop-filter: none; } .topbar::before, .toolrail::before, .opts::before, .statusbar::before, .panel::before, .insp::before { display: none; } }

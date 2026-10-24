@@ -1,0 +1,37 @@
+:root {
+  --canvas: #0b0f10;
+  --inset: #0d1213;
+  --bg: #101416;
+  --panel: #171d1f;
+  --raised: #1d2527;
+  --hover: #243033;
+  --press: #2b3a3d;
+  --line: #303b3d;
+  --line-strong: #3f4d50;
+  --text: #e7eeee;
+  --text-2: #a4b4b5;
+  --muted: #8a9d9f;
+  --faint: #66797b;
+  --accent: #45d6a0;
+  --accent-hi: #6ee7b7;
+  --accent-ink: #04271b;
+  --accent-dim: rgba(69, 214, 160, 0.14);
+  --accent-line: rgba(69, 214, 160, 0.5);
+  --cyan: #57c9d8;
+  --cyan-dim: rgba(87, 201, 216, 0.14);
+  --cyan-line: rgba(87, 201, 216, 0.5);
+  --danger: #f08a85;
+  --warn: #e0b052;
+  --ok: #45d6a0;
+  --k-video: #6aa7c9; --k-audio: #62c5a3; --k-image: #b5a074; --k-text: #cdb27a;
+  --glass: rgba(23, 30, 32, 0.72); --glass-strong: rgba(24, 32, 34, 0.86); --glass-line: rgba(231, 238, 238, 0.12);
+  --glass-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 36%);
+  --glass-hi: inset 0 1px 0 rgba(255, 255, 255, 0.09); --glass-blur: blur(18px) saturate(1.25);
+  --font-ui: "Inter", "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px;
+  --h-bar: 40px; --h-ctl: 28px; --h-ctl-sm: 24px; --h-head: 32px; --h-status: 24px; --h-row: 24px;
+  --r1: 2px; --r2: 3px; --r3: 4px;
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --ease: 110ms ease-out;
+}
