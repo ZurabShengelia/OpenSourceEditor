@@ -166,4 +166,4 @@ MP4 export with H.264 and AAC uses your browser's own encoders. Whether those co
 
 ## License
 
-[MIT](LICENSE). Free to use, copy, modify, merge, publish, distribute and sell, with no warranty. dasdasdasd
+[MIT](LICENSE). Free to use, copy, modify, merge, publish, distribute and sell, with no warranty.  
